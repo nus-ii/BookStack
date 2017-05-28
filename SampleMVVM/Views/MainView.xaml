@@ -2,7 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:SampleMVVM.Commands"
-    Title="Main Window" Height="400" Width="640">
+    Title="Main Window" Height="400" Width="700">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -11,7 +11,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>           
         </Grid.ColumnDefinitions>
 
         <ListView ItemsSource="{Binding SelectedBooksList}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Width="Auto" Grid.Row="1">
@@ -30,25 +30,25 @@
         <ContentControl Content="{Binding SelectedBooksList}"  Margin="10,0,5,0" Grid.Column="1" Grid.Row="1">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
-                 
-                        <StackPanel Margin="10">
+                    <StackPanel Margin="10" Orientation="Horizontal">
+
+                        <StackPanel Orientation="Vertical" Width="300">
                             <TextBlock Text="Название:" />
                             <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
 
                             <TextBlock Text="Автор:"/>
                             <TextBlock Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
-
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="Выдать" Command="{Binding GiveItemCommand}" Margin="10,0" />
-                                <Button Content="Забрать" Command="{Binding GetItemCommand}" Margin="10,0" />
-                            </StackPanel>
-                            <Image Source="{Binding Cover, UpdateSourceTrigger=PropertyChanged}" x:Name="image" Height="144" RenderTransformOrigin="0.542,1.062" Margin="30,30,30,30"/>
-
+                            <Button Content="Открыть папку" Command="{Binding GetItemCommand}" Margin="15,15,15,15" />                            
                         </StackPanel>
-                   
+                    <StackPanel Width="Auto">
+                    <Image Source="{Binding Cover, UpdateSourceTrigger=PropertyChanged}" x:Name="image" Width="150" Margin="3,3,3,3"/>
+                        </StackPanel>
+                    </StackPanel>
+
                 </DataTemplate>
             </ContentControl.ContentTemplate>
-        </ContentControl>
-        <TextBox x:Name="textBox" Height="23" Margin="16,20,10,0" TextWrapping="Wrap" Text="{Binding filterText,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        </ContentControl>   
+
+        <TextBox x:Name="textBox" Height="23" Margin="16,20,10,0" TextWrapping="Wrap" Text="{Binding filterText,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

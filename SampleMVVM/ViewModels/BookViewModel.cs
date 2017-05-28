@@ -5,6 +5,8 @@ using System.Text;
 using SampleMVVM.Models;
 using SampleMVVM.Commands;
 using System.Windows.Input;
+using System.Windows;
+using System.Diagnostics;
 
 namespace SampleMVVM.ViewModels
 {
@@ -78,6 +80,7 @@ namespace SampleMVVM.ViewModels
 
         private void GetItem()
         {
+            Process.Start("explorer.exe", Book.Cover);
             Count++;
         }
 

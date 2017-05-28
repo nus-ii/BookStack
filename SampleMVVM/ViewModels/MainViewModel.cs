@@ -53,7 +53,7 @@ namespace SampleMVVM.ViewModels
             var t = fText.ToLower();
             foreach (var b in this.BooksList)
             {
-                if (b.Title.ToLower().Contains(t) || b.Author.ToLower().Contains(t))
+                if (b.Title.ToLower().Contains(t))
                 {
                     result.Add(b);
                 }
